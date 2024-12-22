@@ -27,11 +27,25 @@ Nb: Veuillez lancer votre application Docker avant de lancer le projet
 docker compose up --build
 ```
 
+### **3. N'oubliez pas de profiter de la vie 😎**
+Nb: Ouvrez votre navigateur et lancez: ```localhost:4200```
+
+![sfdgs](https://github.com/user-attachments/assets/5bf22d6f-4dda-4132-abca-6f7d72549167)
+
+
+### **4. Fonctionnalités 🍽️**
+
+- GET donations
+- POST donations
+- PUT donations
+- DELETE donations
+
+
 ---
 
 ## **Les membres du groupe 🧑🏽‍🎓**
-- Hind KHAYATI
-- Amira FATHALLA
-- Sagnol Boutal KAMDEM DJOKO
+- Hind KHAYATI (frontend - Dockerfile)
+- Amira FATHALLA (backend - Dockerfile)
+- Sagnol Boutal KAMDEM DJOKO (BD - Docker-compose)
 
 
