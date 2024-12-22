@@ -27,6 +27,8 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
       - ./sql-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - mynetwork
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -37,6 +39,8 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "8080:80"
+    networks:
+      - mynetwork
 
   angular-app:
     build:
