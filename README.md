@@ -14,7 +14,7 @@ Avant de commencer, assurez-vous d'avoir les outils suivants installés sur votr
 Clonez ce dépôt depuis GitHub :
 
 ```bash
-git clone https://github.com/777mariaxmaria777/organ-donation-management.git
+git clone https://github.com/sagnolkamdem/organ-donation-management.git
 
 cd organ-donation-management
 ```
@@ -30,7 +30,6 @@ docker compose up --build
 ---
 
 ## **Les membres du groupe 🧑🏽‍🎓**
-Avant de commencer, assurez-vous d'avoir les outils suivants installés sur votre machine :
 - Hind KHAYATI
 - Amira FATHALLA
 - Sagnol Boutal KAMDEM DJOKO
