@@ -2,16 +2,18 @@ services:
 
   flask-app:
     build:
-      context: ./backend          # Specify the backend folder as the build context
+      context: ./backend
     ports:
       - "${FLASK_PORT}:${FLASK_PORT}"
     env_file:
-      - .env            # Update path for the .env file
+      - .env
     volumes:
-      - ./backend:/app            # Mount the backend folder
+      - ./backend:/app
     depends_on:
       - mysql
     command: flask run --host=0.0.0.0 --port=${FLASK_PORT}
+    networks:
+      - mynetwork
 
   mysql:
     image: mysql:8.0
@@ -38,15 +40,21 @@ services:
 
   angular-app:
     build:
-      context: ./frontend   # Specify the frontend folder
+      context: ./frontend
     ports:
-      - "4200:4200"         # Map Angular's dev server port
+      - "4200:4200"
     volumes:
-      - ./frontend:/app     # Mount the frontend directory
-      - /app/node_modules   # Ensure node_modules is not overridden
+      - ./frontend:/app
+      - /app/node_modules
     stdin_open: true
     tty: true
-    command: npm start      # Use Angular's dev server for live reloading
+    command: npm start
+    networks:
+      - mynetwork
 
 volumes:
   mysql_data:
+
+networks:
+  mynetwork:
+    driver: bridge
