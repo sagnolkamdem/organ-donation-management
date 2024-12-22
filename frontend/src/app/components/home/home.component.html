@@ -33,8 +33,8 @@
             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ data.availability ? "Oui" : "Noon" }}</td>
             <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
               <div class="text-indigo-600 hover:text-indigo-900">
-                <i class="pi pi-pencil text-indigo-900 mr-3" (click)="openUpdateDialog(data)" style=""></i>
-                <i class="pi pi-trash" *ngIf="data.id" (click)="deleteDonation(data.id)" style="color: red"></i>
+                <i class="pi pi-pencil text-indigo-900 mr-5 cursor-pointer" (click)="openUpdateDialog(data)" style=""></i>
+                <i class="pi pi-trash cursor-pointer" *ngIf="data.id" (click)="deleteDonation(data.id)" style="color: red"></i>
               </div>
             </td>
           </tr>
