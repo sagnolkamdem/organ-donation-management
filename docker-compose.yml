@@ -1,0 +1,52 @@
+services:
+
+  flask-app:
+    build:
+      context: ./backend          # Specify the backend folder as the build context
+    ports:
+      - "${FLASK_PORT}:${FLASK_PORT}"
+    env_file:
+      - .env            # Update path for the .env file
+    volumes:
+      - ./backend:/app            # Mount the backend folder
+    depends_on:
+      - mysql
+    command: flask run --host=0.0.0.0 --port=${FLASK_PORT}
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql-scripts:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "8080:80"
+
+  angular-app:
+    build:
+      context: ./frontend   # Specify the frontend folder
+    ports:
+      - "4200:4200"         # Map Angular's dev server port
+    volumes:
+      - ./frontend:/app     # Mount the frontend directory
+      - /app/node_modules   # Ensure node_modules is not overridden
+    stdin_open: true
+    tty: true
+    command: npm start      # Use Angular's dev server for live reloading
+
+volumes:
+  mysql_data:
