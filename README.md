@@ -38,7 +38,7 @@ Nb: Ouvrez votre navigateur et lancez: ```localhost:4200```
 - GET donations
 - POST donations
 - PUT donations
-- DELETE donations
+- DELETE donation
 
 
 ---
